@@ -29,7 +29,9 @@ import { LoginViewComponent } from './login-view/login-view.component';
 import { UserViewComponent } from './user-view/user-view.component';
 
 import { SearchViewComponent } from './search-view/search-view.component';
+
 import { CanDeactivateGuard } from './can-deactivate-guard.service';
+
 import { GitHubResolver } from './resolver.service';
 
 import { ToastrModule } from 'ngx-toastr';

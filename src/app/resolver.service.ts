@@ -1,12 +1,12 @@
 import { GithubAPIServiceService } from './github-api-service.service';
 import { Observable } from 'rxjs';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 interface Server {
-  id: number,
-  name: string,
-  status: string
+  id: number;
+  name: string;
+  status: string;
 }
 
 @Injectable()
