@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="row">
+        <div id="sideSection" class="col-md-4" *ngIf="singleGithubData">
+            <img class="profile-image" src="{{singleGithubData.avatar_url}}" alt="Image of {{singleGithubData?.name}}">
+            <h1>{{singleGithubData?.name}} <b>({{singleGithubData?.login}})</b></h1>
+            <p>{{singleGithubData?.bio}}</p>
+            <p>{{singleGithubData?.company}}&nbsp; {{singleGithubData?.location}}</p>
+            <button class="btn btn-danger">Following: {{singleGithubData?.following}} following</button>
+            <button class="btn btn-danger">Followers: {{singleGithubData?.followers}} followers</button>
+            <button class="btn btn-danger" (click)="OpenSearchDialog()">Search Username</button>
+        </div>
+        <div class="col-md-8" *ngIf="singleGithubData">
+            <div class="radiobar">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                        [(ngModel)]="type" [value]="1" [checked]="options" (click)="reposData()">
+                    <label class="form-check-label" for="inlineRadio1">Overview</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                        [(ngModel)]="type" [value]="2" [checked]="options" (click)="reposData()">
+                    <label class="form-check-label" for="inlineRadio2">Repositories <button>{{singleGithubData?.public_repos}}</button></label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                        [(ngModel)]="type" [value]="3" [checked]="options">
+                    <label class="form-check-label" for="inlineRadio3" (click)="gistsData()">Gists <button>{{singleGithubData?.public_gists}}</button></label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                        [(ngModel)]="type" [value]="4" [checked]="!options" (click)="FollowersData()">
+                    <label class="form-check-label" for="inlineRadio4">Followers</label>
+                </div>
+            </div>
+            <hr>
+            <!-- Here Describe Overview Section -->
+            <div *ngIf="type == 1" class="repocard">
+                <div class="row">
+                    <div class="col-md-6" *ngFor="let repo of repositoriesData">
+                        <div class="card">
+                            <h2>{{repo?.name}}</h2>
+                            <p>{{repo?.bio}}</p>
+                            <b>Updated on {{repo?.updated_at | date}} </b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Here Describe Repositories Section-->
+            <div *ngIf="type == 2">
+                <div class="row">
+                    <div class="col-md-10" *ngFor="let repo of repositoriesData">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3><a href="{{repo?.html_url}}">{{repo?.full_name}}</a></h3>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-dark">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-star" viewBox="0 0 16 16">
+                                        <path
+                                            d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                                    </svg>&nbsp;&nbsp;
+                                    {{repo?.stargazers_count}}
+                                </button>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <!-- Here Describe Gists Section -->
+            <div *ngIf="type == 3">
+                <div class="row">
+                    <div class="col-md-6" *ngFor="let gist of gistData">
+                        <div class="card">
+                            <h1>{{gist?.owner?.login}} / {{gist?.files}}</h1>
+                            <p>{{gist?.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Here Describe Followers Section -->
+            <div *ngIf="type == 4">
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let follow of followers">
+                        <div class="card">
+                            <img class="follower-image" src="{{follow?.avatar_url}}">
+                            <h2 class="follow-name"><a href="{{follow?.html_url}}" target="_blank">{{follow?.login}}</a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

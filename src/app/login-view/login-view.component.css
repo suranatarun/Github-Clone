@@ -1,0 +1,28 @@
+.login-row{
+    margin-top:10%;
+}
+h1{
+    font-size:40px;
+    color:#0a043c;
+}
+p {
+    color:#0a043c;
+    font-size:17px;
+}
+#loginSection {
+    display:flex;
+    flex-direction:row;
+}
+.btn-primary {
+    box-shadow:3px 3px 10px 3px #bbbbbb;
+    background-color:transparent;
+    color:#0a043c;
+    font-weight:700;
+    width:150px;
+    border-radius:5px 100px 5px 100px;
+    border:none;
+}
+input{
+    box-shadow:3px 3px 10px 3px rgb(196, 192, 192);
+    border-radius:50px 50px 50px 50px;
+}

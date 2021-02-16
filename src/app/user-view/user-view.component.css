@@ -1,0 +1,57 @@
+.profile-image {
+    border-radius:50%;
+    height:235px;
+    width:250px;
+}
+h1{
+    color:#0a043c;
+}
+#sideSection{
+    margin-top:50px;
+}
+.form-check {
+    margin-left:40px;
+}
+.form-check-label {
+    font-size:18px;
+    color:#0a043c;
+}
+.btn-danger {
+    background-color:transparent;
+    color:#0a043c;
+    display: block;
+    border:none;
+    box-shadow:3px 3px 10px 2px #bbbbbb;
+    margin-top:10px;
+}
+.repocard {
+    margin-top:40px;
+}
+.radiobar {
+    margin-top:50px;
+}
+.btn-dark {
+    width:150px;
+}
+.card {
+    box-shadow:3px 3px 10px 3px #bbbbbb;
+    border:none;
+    margin-top:20px;
+    padding:5px 10px;
+}
+h1.reponame{
+    display:inline-block;
+}
+.follower-image{
+    border-radius:50%;
+    height:130px;
+    width:130px;
+    margin:auto;
+}
+.follow-name{
+    text-align: center;
+    color:#0a043c;
+}
+.follow-name:hover{
+    text-decoration: none;
+}

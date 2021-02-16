@@ -1,0 +1,24 @@
+<div class="login-row container">
+    <div class="row" id="loginSection">
+        <div class="col-md-6">
+            <h1>Github-Clone</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde cupiditate delectus enim quas
+                reprehenderit eum necessitatibus, assumenda, molestiae quisquam dolor exercitationem corporis fuga
+                minima amet nobis culpa nam. Voluptates, laborum laudantium, quos exercitationem error necessitatibus
+                reprehenderit nobis debitis voluptatibus sint ut distinctio, aliquid eos praesentium odit architecto.
+                Cumque, voluptates culpa!
+            </p>
+        </div>
+        <div class="col-md-6">
+            <form [formGroup]="loginForm">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">UserName</label>
+                  <input type="text" class="form-control" placeholder="Enter UserName" formControlName="username" id="exampleInputText1" aria-describedby="textHelp">
+                  <small id="textHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="HereLogin()">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
