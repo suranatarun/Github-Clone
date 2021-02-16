@@ -62,6 +62,7 @@ export class UserViewComponent implements OnInit {
 
     this.service.getSingleGithubData(username).subscribe((result) => {
       this.singleGithubData = result;
+      this.service.isLoggedIn = false;
       console.log(this.singleGithubData);
     });
   }
