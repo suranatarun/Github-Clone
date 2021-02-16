@@ -15,11 +15,10 @@ export class GithubAPIServiceService {
    * for validate a full data I used personal access token and also used access type.
    * Here Used Access Token for access a full data of single User Data.
    */
-  public accesstoken = 'f32cb43762aa4973db1f98c88ea502053b0e8962';
+  public accesstoken = '234b823e261c2cc04f3a6bb673f33822f789f610';
   public accesstype = 'bearer';
   username: any;
-  // tslint:disable-next-line: ban-types
-  isLoggedIn: Boolean = false;
+  isLoggedIn = false;
 
   /**
    * Here Create getSingleGithubData Function

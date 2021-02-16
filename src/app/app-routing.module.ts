@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'Github-Login', component: LoginViewComponent,  },
   { path: '', redirectTo: 'Github-Login', pathMatch: 'full' },
 
-  { path: 'Github-Home/:username', component: UserViewComponent, canDeactivate: [CanDeactivateGuard]},
+  { path: 'Github-Home/:username', component: UserViewComponent},
   { path: 'search-view', component: SearchViewComponent }
 ];
 
