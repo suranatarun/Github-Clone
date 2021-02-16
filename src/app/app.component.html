@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light">
   <h1 class="navbar-brand mb-0 h1">{{ title }}</h1>
-  <button class="btn btn-dark" *ngIf="service.isLoggedIn">
+  <button class="btn btn-dark" *ngIf="service.isLoggedIn" (click)="logout()">
     Logout
   </button>
 </nav>

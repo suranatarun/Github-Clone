@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GithubAPIServiceService } from './github-api-service.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { GithubAPIServiceService } from './github-api-service.service';
 })
 export class AppComponent implements OnInit {
   title = 'Github-Clone';
-  constructor(public service: GithubAPIServiceService) {}
+  constructor(public service: GithubAPIServiceService, private router: Router) {}
   ngOnInit(): void {
+  }
+  public logout(): any {
+    this.router.navigate(['Github-Login']);
   }
 }
