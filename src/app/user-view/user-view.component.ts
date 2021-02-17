@@ -16,7 +16,7 @@ export class UserViewComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService
-    ) { }
+  ) { }
   /**
    * Here Create singleGithubData keyword
    * Here this keyword called in getSingleData Function
@@ -45,25 +45,39 @@ export class UserViewComponent implements OnInit {
   gistData: any;
   followers: any;
   userParamData: any;
-   /**
-    * Here Create getSingleData Function
-    * Here create username keyword using const keyword
-    * In username keyword assign textbox value for fetching a data according to username.
-    * Here Create @param singleGithubData
-    * Here Called all data from api and then assign in singleGithubData keyword.
-    */
+  UserName: any;
+  ErrorText: string;
+  ErroBlock;
+  /**
+   * Here Create getSingleData Function
+   * Here create username keyword using const keyword
+   * In username keyword assign textbox value for fetching a data according to username.
+   * Here Create @param singleGithubData
+   * Here Called all data from api and then assign in singleGithubData keyword.
+   */
   ngOnInit(): void {
     this.getSingleGithubData();
   }
 
   public getSingleGithubData(): any {
     const username = this.route.snapshot.paramMap.get('username');
-    console.log(username);
-
     this.service.getSingleGithubData(username).subscribe((result) => {
       this.singleGithubData = result;
-      this.service.isLoggedIn = false;
-      console.log(this.singleGithubData);
+      this.service.isLoggedIn = true;
+    }, err => {
+      if (err.status === 404) {
+        this.ErrorText = 'You got Not Found Component';
+      }
+      else if (err.status === 401) {
+        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
+      }
+      else if (err.status === 304) {
+        this.ErrorText = 'API is not modified';
+      }
+      else {
+        this.ErrorText = 'Forbidden Error';
+      }
+      console.log(this.ErrorText);
     });
   }
   /**
@@ -73,10 +87,23 @@ export class UserViewComponent implements OnInit {
    * Here Called all data from api and then assign in repositoriesData keyword.
    */
   public reposData(): any {
-    this.toastr.success('Hello world!', 'Toastr fun!');
+    this.toastr.info('You see repositories data of authenticated user ' + this.service.username);
     this.service.getRepoData().subscribe((data) => {
       this.repositoriesData = data;
-      console.log(this.repositoriesData);
+    }, err => {
+      if (err.status === 404) {
+        this.ErrorText = 'You got Not Found Component';
+      }
+      else if (err.status === 401) {
+        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
+      }
+      else if (err.status === 304) {
+        this.ErrorText = 'API is not modified';
+      }
+      else {
+        this.ErrorText = 'Forbidden Error';
+      }
+      console.log(this.ErrorText);
     });
   }
   /**
@@ -86,21 +113,51 @@ export class UserViewComponent implements OnInit {
    * Here Called all data from api and then assign in gistData keyword.
    */
   public gistsData(): any {
+    this.toastr.info('You see Gists data of authenticated user ' + this.service.username);
     this.service.getGistsData().subscribe((data) => {
       this.gistData = data;
       console.log(this.gistData);
+    }, err => {
+      if (err.status === 404) {
+        this.ErrorText = 'You got Not Found Component';
+      }
+      else if (err.status === 401) {
+        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
+      }
+      else if (err.status === 304) {
+        this.ErrorText = 'API is not modified';
+      }
+      else {
+        this.ErrorText = 'Forbidden Error';
+      }
+      console.log(this.ErrorText);
     });
   }
-   /**
-    * Here Called repodata according to a user
-    * Here Create reposData Function
-    * Here Create @param repositoriesData
-    * Here Called all data from api and then assign in repositoriesData keyword.
-    */
+  /**
+   * Here Called repodata according to a user
+   * Here Create reposData Function
+   * Here Create @param repositoriesData
+   * Here Called all data from api and then assign in repositoriesData keyword.
+   */
   public FollowersData(): any {
+    this.toastr.info('You see Followers data of authenticated user ' + this.service.username);
     this.service.getFollowersData().subscribe((data) => {
       this.followers = data;
       console.log(this.followers);
+    },  err => {
+      if (err.status === 404) {
+        this.ErrorText = 'You got Not Found Component';
+      }
+      else if (err.status === 401) {
+        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
+      }
+      else if (err.status === 304) {
+        this.ErrorText = 'API is not modified';
+      }
+      else {
+        this.ErrorText = 'Forbidden Error';
+      }
+      console.log(this.ErrorText);
     });
   }
   /**
