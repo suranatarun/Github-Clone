@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import 'rxjs/add/operator/catch';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,7 @@ export class GithubAPIServiceService {
    * for validate a full data I used personal access token and also used access type.
    * Here Used Access Token for access a full data of single User Data.
    */
-  public accesstoken = '234b823e261c2cc04f3a6bb673f33822f789f610';
+  public accesstoken = '5875fb66791fd4d584c530bb2f661d8e143380a6';
   public accesstype = 'bearer';
   username: any;
   isLoggedIn = false;
@@ -28,7 +29,8 @@ export class GithubAPIServiceService {
    */
   public getSingleGithubData(username): Observable<any> {
     this.username = username;
-    return this.http.get(this.APIUrl + 'users/' + username + '?access_token=' + this.accesstoken + '&access_type=' + this.accesstype);
+    return this.http.get(this.APIUrl + 'users/' + username + '?access_token=' + this.accesstoken + '&access_type=' + this.accesstype)
+    .pipe(catchError(this.handleError));
   }
 
   /**
@@ -38,7 +40,8 @@ export class GithubAPIServiceService {
    */
   public getRepoData(): Observable<any> {
     // tslint:disable-next-line: max-line-length
-    return this.http.get(this.APIUrl + 'users/' + this.username + '/repos?access_token=' + this.accesstoken + '&access_type=' + this.accesstype);
+    return this.http.get(this.APIUrl + 'users/' + this.username + '/repos?access_token=' + this.accesstoken + '&access_type=' + this.accesstype)
+    .pipe(catchError(this.handleError));
   }
 
   /**
@@ -48,7 +51,8 @@ export class GithubAPIServiceService {
    */
   public getGistsData(): Observable<any> {
     // tslint:disable-next-line: max-line-length
-    return this.http.get(this.APIUrl + 'users/' + this.username + '/gists?access_token=' + this.accesstoken + '&access_type=' + this.accesstype);
+    return this.http.get(this.APIUrl + 'users/' + this.username + '/gists?access_token=' + this.accesstoken + '&access_type=' + this.accesstype)
+    .pipe(catchError(this.handleError));
   }
 
    /**
@@ -58,7 +62,9 @@ export class GithubAPIServiceService {
     */
   public getFollowersData(): Observable<any> {
     // tslint:disable-next-line: max-line-length
-    return this.http.get(this.APIUrl + 'users/' + this.username + '/followers?access_token=' + this.accesstoken + '&access_type=' + this.accesstype);
+    return this.http.get(this.APIUrl + 'users/' + this.username + '/followers?access_token=' + this.accesstoken + '&access_type=' + this.accesstype)
+    .pipe(catchError(this.handleError));
+
   }
 
   public handleError(err: HttpErrorResponse): Observable<any> {
@@ -78,6 +84,5 @@ export class GithubAPIServiceService {
     console.error(errorMessage);
 
     return throwError(errorMessage);
-
   }  // END handleError
 }
