@@ -16,7 +16,7 @@ export class GithubAPIServiceService {
    * for validate a full data I used personal access token and also used access type.
    * Here Used Access Token for access a full data of single User Data.
    */
-  public accesstoken = '5875fb66791fd4d584c530bb2f661d8e143380a6';
+  public accesstoken = '7766a6a3d8e1f1dd12ac152916c27f0cffd576e1';
   public accesstype = 'bearer';
   username: any;
   isLoggedIn = false;
@@ -77,7 +77,7 @@ export class GithubAPIServiceService {
 
     } else {
 
-      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+      errorMessage = `Server returned code: ${err.status}`;
 
     } // end condition *if
 
