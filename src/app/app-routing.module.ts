@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, Router } from '@angular/router';
-import { CanDeactivateGuard } from './can-deactivate-guard.service';
 import { LoginViewComponent } from './login-view/login-view.component';
 import { GitHubResolver } from './resolver.service';
 import { SearchViewComponent } from './search-view/search-view.component';
