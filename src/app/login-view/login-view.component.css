@@ -3,26 +3,55 @@
 }
 h1{
     font-size:40px;
-    color:#0a043c;
+    font-weight:600;
+    color:#1e212d;
 }
 p {
-    color:#0a043c;
-    font-size:17px;
+    color:#1e212d;
+    font-size:15px;
+    font-weight:600;
 }
 #loginSection {
     display:flex;
     flex-direction:row;
 }
+label {
+    font-size:20px;
+    font-weight:600;
+    color:#1e212d;
+}
+small {
+    color:#1e212d;
+}
 .btn-primary {
-    box-shadow:3px 3px 10px 3px #bbbbbb;
-    background-color:transparent;
-    color:#0a043c;
+    box-shadow:3px 3px 10px 3px #faf3e0;
+    background-color:#1e212d;
+    color:#eabf9f;
     font-weight:700;
     width:150px;
+    padding:5px;
     border-radius:5px 100px 5px 100px;
     border:none;
 }
 input{
-    box-shadow:3px 3px 10px 3px rgb(196, 192, 192);
+    box-shadow:3px 3px 10px 3px #faf3e0;
     border-radius:50px 50px 50px 50px;
+    background-color:#1e212d;
+    color:#eabf9f;
+    font-weight:600;
 }
+input:focus{
+    background-color:#1e212d;
+    color:#eabf9f;
+}
+::-webkit-input-placeholder { /* Edge */
+    color: #eabf9f;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer */
+    color: #eabf9f;
+  }
+  
+  ::placeholder {
+    color: #eabf9f;
+  }
