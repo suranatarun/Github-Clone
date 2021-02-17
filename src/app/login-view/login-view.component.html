@@ -1,21 +1,39 @@
 <div class="login-row container">
+    <div class ="alert-danger" role="alert" *ngIf="ErrorBlock">
+        <h4>{{ErrorText}}</h4>
+    </div>
     <div class="row" id="loginSection">
         <div class="col-md-6">
             <h1>Github-Clone</h1>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde cupiditate delectus enim quas
-                reprehenderit eum necessitatibus, assumenda, molestiae quisquam dolor exercitationem corporis fuga
-                minima amet nobis culpa nam. Voluptates, laborum laudantium, quos exercitationem error necessitatibus
-                reprehenderit nobis debitis voluptatibus sint ut distinctio, aliquid eos praesentium odit architecto.
-                Cumque, voluptates culpa!
+                GitHub, Inc. is a provider of Internet hosting for software development and version control using Git.
+                It offers the distributed version control and source code management (SCM) functionality of Git, plus
+                its own features. It provides access control and several collaboration features such as bug tracking,
+                feature requests, task management, continuous integration and wikis for every project. Headquartered
+                in California, it has been a subsidiary of Microsoft since 2018.
+                <br><br>
+                GitHub offers its basic services free of charge. Its more advanced professional and enterprise services
+                are commercial. Free GitHub accounts are commonly used to host open-source projects.As of January
+                2019, GitHub offers unlimited private repositories to all plans, including free accounts, but allowed
+                only up to three collaborators per repository for free. Starting from April 15, 2020, the free plan
+                allows unlimited collaborators, but restricts private repositories to 2,000 minutes of GitHub Actions
+                per month. As of January 2020, GitHub reports having over 40 million usersand more than 190
+                million repositories (including at least 28 million public repositories), making it the largest
+                host of source code in the world.
             </p>
         </div>
         <div class="col-md-6">
+            <div *ngIf="Errormessage">
+                <p class="alert alert-danger">{{Errormessage}}</p>
+                <!-- Here Show a Error Message when username is wrong-->
+            </div>
             <form [formGroup]="loginForm">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">UserName</label>
-                  <input type="text" class="form-control" placeholder="Enter UserName" formControlName="username" id="exampleInputText1" aria-describedby="textHelp">
-                  <small id="textHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <label for="exampleInputEmail1">UserName</label>
+                    <input type="text" class="form-control" placeholder="Enter UserName" ([ngModel])="userName" formControlName="username"
+                        id="exampleInputText1" aria-describedby="textHelp" required>
+                    <small id="textHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
                 </div>
                 <button type="submit" class="btn btn-primary" (click)="HereLogin()">Login</button>
             </form>
