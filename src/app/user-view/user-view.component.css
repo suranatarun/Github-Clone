@@ -1,13 +1,19 @@
+#sideSection{
+    margin-top:50px;
+}
 .profile-image {
     border-radius:50%;
     height:235px;
     width:250px;
 }
 h1{
-    color:#0a043c;
+    color:#1e212d;
 }
-#sideSection{
-    margin-top:50px;
+p{
+    color:#1e212d;
+}
+.time {
+    text-align: right;
 }
 .form-check {
     margin-left:40px;
@@ -17,11 +23,10 @@ h1{
     color:#0a043c;
 }
 .btn-danger {
-    background-color:transparent;
-    color:#0a043c;
+    background-color:#1e212d;
+    color:#eabf9f;;
     display: block;
     border:none;
-    box-shadow:3px 3px 10px 2px #bbbbbb;
     margin-top:10px;
 }
 .repocard {
@@ -32,9 +37,11 @@ h1{
 }
 .btn-dark {
     width:150px;
+    color:#eabf9f;
 }
 .card {
-    box-shadow:3px 3px 10px 3px #bbbbbb;
+    background-color:#b68973;
+    box-shadow:3px 3px 10px 3px #1e212d;
     border:none;
     margin-top:20px;
     padding:5px 10px;
@@ -50,8 +57,38 @@ h1.reponame{
 }
 .follow-name{
     text-align: center;
-    color:#0a043c;
 }
-.follow-name:hover{
+.follow-name .followers-link {
+    color:#1e212d;
+}
+.follow-name .followers-link:hover{
+    text-decoration: none;
+}
+.repo-btn{
+    border:none;
+    border-radius:50%;
+    background-color:#1e212d;
+    color:#eabf9f;
+    padding:3px 8px;
+}
+.gist-btn{
+    border:none;
+    border-radius:50%;
+    background-color:#1e212d;
+    color:#eabf9f;
+    padding:3px 8px;
+}
+.follow-btn{
+    border:none;
+    border-radius:50%;
+    background-color:#1e212d;
+    color:#eabf9f;
+    padding:3px 8px;
+}
+h3 .repo-url {
+    color:#1e212d;
+    text-decoration: none;
+}
+h3 .repo-url:hover{
     text-decoration: none;
 }
