@@ -11,12 +11,15 @@ import { GithubAPIServiceService } from '../github-api-service.service';
 })
 export class LoginViewComponent implements OnInit {
   Errormessage: string;
-  constructor(private service: GithubAPIServiceService, private router: Router, private toastr: ToastrService) { }
-  /**
-   * Here Used Params
-   * @params RepositoriesData
-   */
+  userName: any;
+  ErrorBlock;
+  ErrorText: any;
+   /**
+    * Here Used Params
+    * @params RepositoriesData
+    */
   RepositoriesData;
+  constructor(private service: GithubAPIServiceService, private router: Router, private toastr: ToastrService) { }
   /**
    * Here Used loginForm keyword
    * loginForm used for FormGroup
@@ -48,12 +51,26 @@ export class LoginViewComponent implements OnInit {
   public HereLogin(): any {
     const username = this.loginForm.value.username;
     this.service.getSingleGithubData(username).subscribe((data) => {
-      console.log(data);
+      this.toastr.success('Your are successsfully login ' + username);
       this.service.userData = data;
-      this.service.isLoggedIn = true;
       this.router.navigate(['Github-Home', username]);
     }, err => {
-      this.toastr.warning('Here Your Enter UserName is Invalid');
+      this.Errormessage = 'Here Your Enter Username is Invalid';
+      this.toastr.error('Here Your Enter UserName is Invalid');
+
+      if (err.status === 404) {
+        this.ErrorText = 'You got Not Found Component';
+      }
+      else if (err.status === 401) {
+        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
+      }
+      else if (err.status === 304) {
+        this.ErrorText = 'API is not modified';
+      }
+      else {
+        this.ErrorText = 'Forbidden Error';
+      }
+      console.log(this.ErrorText);
     });
   }
 }
