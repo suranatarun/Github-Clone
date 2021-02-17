@@ -30,8 +30,6 @@ import { UserViewComponent } from './user-view/user-view.component';
 
 import { SearchViewComponent } from './search-view/search-view.component';
 
-import { CanDeactivateGuard } from './can-deactivate-guard.service';
-
 import { GitHubResolver } from './resolver.service';
 
 import { ToastrModule } from 'ngx-toastr';
@@ -50,9 +48,14 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     MatDialogModule,
     HttpClientModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      progressBar: true,
+      preventDuplicates: true,
+      progressAnimation: 'increasing'
+    }),
   ],
-  providers: [GithubAPIServiceService, CanDeactivateGuard, GitHubResolver],
+  providers: [GithubAPIServiceService, GitHubResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
