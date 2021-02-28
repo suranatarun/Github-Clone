@@ -33,12 +33,15 @@ import { SearchViewComponent } from './search-view/search-view.component';
 import { GitHubResolver } from './resolver.service';
 
 import { ToastrModule } from 'ngx-toastr';
+
+import { ErrorViewComponent } from './error-view/error-view.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginViewComponent,
     UserViewComponent,
     SearchViewComponent,
+    ErrorViewComponent,
   ],
   imports: [
     BrowserModule,

@@ -133,19 +133,8 @@ export class SearchViewComponent implements OnInit {
     this.service.getFollowersData().subscribe((data) => {
       this.followers = data;
     }, err => {
-      if (err.status === 404) {
-        this.ErrorText = 'You got Not Found Component';
-      }
-      else if (err.status === 401) {
-        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
-      }
-      else if (err.status === 304) {
-        this.ErrorText = 'API is not modified';
-      }
-      else {
-        this.ErrorText = 'Forbidden Error';
-      }
-      console.log(err.message);
+      this.ErrorText = err;
+      console.log(this.ErrorText);
     });
   }
 }

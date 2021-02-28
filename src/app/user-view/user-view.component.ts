@@ -65,18 +65,7 @@ export class UserViewComponent implements OnInit {
       this.singleGithubData = result;
       this.service.isLoggedIn = true;
     }, err => {
-      if (err.status === 404) {
-        this.ErrorText = 'You got Not Found Component';
-      }
-      else if (err.status === 401) {
-        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
-      }
-      else if (err.status === 304) {
-        this.ErrorText = 'API is not modified';
-      }
-      else {
-        this.ErrorText = 'Forbidden Error';
-      }
+      this.ErrorText = err;
       console.log(this.ErrorText);
     });
   }
@@ -91,18 +80,7 @@ export class UserViewComponent implements OnInit {
     this.service.getRepoData().subscribe((data) => {
       this.repositoriesData = data;
     }, err => {
-      if (err.status === 404) {
-        this.ErrorText = 'You got Not Found Component';
-      }
-      else if (err.status === 401) {
-        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
-      }
-      else if (err.status === 304) {
-        this.ErrorText = 'API is not modified';
-      }
-      else {
-        this.ErrorText = 'Forbidden Error';
-      }
+      this.ErrorText = err;
       console.log(this.ErrorText);
     });
   }
@@ -118,18 +96,7 @@ export class UserViewComponent implements OnInit {
       this.gistData = data;
       console.log(this.gistData);
     }, err => {
-      if (err.status === 404) {
-        this.ErrorText = 'You got Not Found Component';
-      }
-      else if (err.status === 401) {
-        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
-      }
-      else if (err.status === 304) {
-        this.ErrorText = 'API is not modified';
-      }
-      else {
-        this.ErrorText = 'Forbidden Error';
-      }
+      this.ErrorText = err;
       console.log(this.ErrorText);
     });
   }
@@ -145,18 +112,7 @@ export class UserViewComponent implements OnInit {
       this.followers = data;
       console.log(this.followers);
     },  err => {
-      if (err.status === 404) {
-        this.ErrorText = 'You got Not Found Component';
-      }
-      else if (err.status === 401) {
-        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
-      }
-      else if (err.status === 304) {
-        this.ErrorText = 'API is not modified';
-      }
-      else {
-        this.ErrorText = 'Forbidden Error';
-      }
+      this.ErrorText = err;
       console.log(this.ErrorText);
     });
   }

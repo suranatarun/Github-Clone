@@ -1,6 +1,6 @@
 <div class="login-row container">
-    <div class ="alert-danger" role="alert" *ngIf="ErrorBlock">
-        <h4>{{ErrorText}}</h4>
+    <div class="alert-danger" role="alert" *ngIf="ErrorText">
+        <h3>{{ErrorText}}</h3>
     </div>
     <div class="row" id="loginSection">
         <div class="col-md-6">
@@ -30,10 +30,8 @@
             <form [formGroup]="loginForm">
                 <div class="form-group">
                     <label for="exampleInputEmail1">UserName</label>
-                    <input type="text" class="form-control" placeholder="Enter UserName" ([ngModel])="userName" formControlName="username"
-                        id="exampleInputText1" aria-describedby="textHelp" required>
-                    <small id="textHelp" class="form-text text-muted">We'll never share your email with anyone
-                        else.</small>
+                    <input type="text" class="form-control" placeholder="Enter UserName" ([ngModel])="userName" formControlName="username" id="exampleInputText1" aria-describedby="textHelp" required>
+                    <small id="textHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <button type="submit" class="btn btn-primary" (click)="HereLogin()">Login</button>
             </form>

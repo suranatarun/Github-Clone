@@ -15,8 +15,8 @@ export class GitHubResolver implements Resolve<Server>{
 
   constructor(private service: GithubAPIServiceService){}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Server>
-  | Promise<Server> | Server {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Server> | Promise<Server> | Server
+  {
     return this.service.getSingleGithubData(this.service.username);
   }
 }

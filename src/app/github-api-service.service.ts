@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError} from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import 'rxjs/add/operator/catch';
 @Injectable({
   providedIn: 'root'
 })
 export class GithubAPIServiceService {
-  constructor(public http: HttpClient) {
-    console.log('Here Github api service called');
-  }
+  constructor(public http: HttpClient) {}
   userData: any;
   public APIUrl = 'https://api.github.com/';
   /**
    * for validate a full data I used personal access token and also used access type.
    * Here Used Access Token for access a full data of single User Data.
    */
-  public accesstoken = '7766a6a3d8e1f1dd12ac152916c27f0cffd576e1';
+  public accesstoken = '2800aff65a02e73ac8b9b7f4acda7ca50469bffd';
   public accesstype = 'bearer';
   username: any;
   isLoggedIn = false;
@@ -29,8 +27,10 @@ export class GithubAPIServiceService {
    */
   public getSingleGithubData(username): Observable<any> {
     this.username = username;
-    return this.http.get(this.APIUrl + 'users/' + username + '?access_token=' + this.accesstoken + '&access_type=' + this.accesstype)
-    .pipe(catchError(this.handleError));
+    return this.http.get(
+      this.APIUrl + 'users/' + username + '?access_token=' + this.accesstoken +
+      '&access_type=' + this.accesstype)
+      .pipe(catchError(this.handleError));
   }
 
   /**
@@ -39,9 +39,10 @@ export class GithubAPIServiceService {
    * This API fetch authenticate single user repositories data.
    */
   public getRepoData(): Observable<any> {
-    // tslint:disable-next-line: max-line-length
-    return this.http.get(this.APIUrl + 'users/' + this.username + '/repos?access_token=' + this.accesstoken + '&access_type=' + this.accesstype)
-    .pipe(catchError(this.handleError));
+    return this.http.get(
+      this.APIUrl + 'users/' + this.username + '/repos?access_token=' + this.accesstoken +
+      '&access_type=' + this.accesstype)
+      .pipe(catchError(this.handleError));
   }
 
   /**
@@ -50,9 +51,10 @@ export class GithubAPIServiceService {
    * This API fetch authenticate single user Gist Data.
    */
   public getGistsData(): Observable<any> {
-    // tslint:disable-next-line: max-line-length
-    return this.http.get(this.APIUrl + 'users/' + this.username + '/gists?access_token=' + this.accesstoken + '&access_type=' + this.accesstype)
-    .pipe(catchError(this.handleError));
+    return this.http.get(
+      this.APIUrl + 'users/' + this.username + '/gists?access_token=' + this.accesstoken +
+      '&access_type=' + this.accesstype)
+      .pipe(catchError(this.handleError));
   }
 
    /**
@@ -61,14 +63,14 @@ export class GithubAPIServiceService {
     * This API fetch authenticate single user Followers data.
     */
   public getFollowersData(): Observable<any> {
-    // tslint:disable-next-line: max-line-length
-    return this.http.get(this.APIUrl + 'users/' + this.username + '/followers?access_token=' + this.accesstoken + '&access_type=' + this.accesstype)
-    .pipe(catchError(this.handleError));
+    return this.http.get(
+      this.APIUrl + 'users/' + this.username + '/followers?access_token=' + this.accesstoken +
+      '&access_type=' + this.accesstype)
+      .pipe(catchError(this.handleError));
 
   }
 
-  public handleError(err: HttpErrorResponse): Observable<any> {
-
+  public handleError(err: HttpErrorResponse): any {
     let errorMessage = '';
 
     if (err.error instanceof Error) {
@@ -84,5 +86,5 @@ export class GithubAPIServiceService {
     console.error(errorMessage);
 
     return throwError(errorMessage);
-  }  // END handleError
+  }
 }
