@@ -41,13 +41,11 @@ export class UserViewComponent implements OnInit {
   type: any; /** This object is used for condition in input item which is using for slider */
   options: any; /** This object is used for set condition */
   singleGithubData: any;
-  repositoriesData: any;
-  gistData: any;
-  followers: any;
+  repositoriesData: any; /** Here this keyword called for fetch repositories data */
+  gistData: any; /** Here this keyword called for gist data  */
+  followers: any; /** Here this keyword called for followers data */
   userParamData: any;
   UserName: any;
-  ErrorText: string;
-  ErroBlock;
   /**
    * Here Create getSingleData Function
    * Here create username keyword using const keyword
@@ -65,8 +63,7 @@ export class UserViewComponent implements OnInit {
       this.singleGithubData = result;
       this.service.isLoggedIn = true;
     }, err => {
-      this.ErrorText = err;
-      console.log(this.ErrorText);
+      this.toastr.error(err);
     });
   }
   /**
@@ -80,8 +77,7 @@ export class UserViewComponent implements OnInit {
     this.service.getRepoData().subscribe((data) => {
       this.repositoriesData = data;
     }, err => {
-      this.ErrorText = err;
-      console.log(this.ErrorText);
+      this.toastr.error(err);
     });
   }
   /**
@@ -96,8 +92,7 @@ export class UserViewComponent implements OnInit {
       this.gistData = data;
       console.log(this.gistData);
     }, err => {
-      this.ErrorText = err;
-      console.log(this.ErrorText);
+      this.toastr.error(err);
     });
   }
   /**
@@ -112,8 +107,7 @@ export class UserViewComponent implements OnInit {
       this.followers = data;
       console.log(this.followers);
     },  err => {
-      this.ErrorText = err;
-      console.log(this.ErrorText);
+      this.toastr.error(err);
     });
   }
   /**

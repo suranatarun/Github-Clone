@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { GithubAPIServiceService } from '../github-api-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-search-view',
@@ -9,7 +10,7 @@ import { GithubAPIServiceService } from '../github-api-service.service';
 })
 export class SearchViewComponent implements OnInit {
 
-  constructor(private service: GithubAPIServiceService) { }
+  constructor(private service: GithubAPIServiceService, private toastr: ToastrService) { }
   /**
    * Here Create singleGithubData keyword
    * Here this keyword called in getSingleData Function
@@ -59,18 +60,7 @@ export class SearchViewComponent implements OnInit {
     this.service.getSingleGithubData(username).subscribe((data) => {
       this.singleGithubData = data;
     }, err => {
-      if (err.status === 404) {
-        this.ErrorText = 'You got Not Found Component';
-      }
-      else if (err.status === 401) {
-        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
-      }
-      else if (err.status === 304) {
-        this.ErrorText = 'API is not modified';
-      }
-      else {
-        this.ErrorText = 'Forbidden Error';
-      }
+      this.toastr.error(err);
     });
   }
   /**
@@ -83,19 +73,7 @@ export class SearchViewComponent implements OnInit {
     this.service.getRepoData().subscribe((data) => {
       this.repositoriesData = data;
     }, err => {
-      if (err.status === 404) {
-        this.ErrorText = 'You got Not Found Component';
-      }
-      else if (err.status === 401) {
-        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
-      }
-      else if (err.status === 304) {
-        this.ErrorText = 'API is not modified';
-      }
-      else {
-        this.ErrorText = 'Forbidden Error';
-      }
-      console.log(err.message);
+      this.toastr.error(err);
     });
   }
   /**
@@ -108,19 +86,7 @@ export class SearchViewComponent implements OnInit {
     this.service.getGistsData().subscribe((data) => {
       this.gistData = data;
     }, err => {
-      if (err.status === 404) {
-        this.ErrorText = 'You got Not Found Component';
-      }
-      else if (err.status === 401) {
-        this.ErrorText = 'User is Not authorized or a Token is expired or removed';
-      }
-      else if (err.status === 304) {
-        this.ErrorText = 'API is not modified';
-      }
-      else {
-        this.ErrorText = 'Forbidden Error';
-      }
-      console.log(err.message);
+      this.toastr.error(err);
     });
   }
   /**
@@ -133,8 +99,7 @@ export class SearchViewComponent implements OnInit {
     this.service.getFollowersData().subscribe((data) => {
       this.followers = data;
     }, err => {
-      this.ErrorText = err;
-      console.log(this.ErrorText);
+      this.toastr.error(err);
     });
   }
 }

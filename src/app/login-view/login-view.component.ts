@@ -10,15 +10,13 @@ import { GithubAPIServiceService } from '../github-api-service.service';
   styleUrls: ['./login-view.component.css']
 })
 export class LoginViewComponent implements OnInit {
-  Errormessage: string;
+  ErrorMessage: string;
   userName: any;
-  ErrorBlock;
-  ErrorText: any;
+  RepositoriesData;
    /**
     * Here Used Params
     * @params RepositoriesData
     */
-  RepositoriesData;
   constructor(private service: GithubAPIServiceService, private router: Router, private toastr: ToastrService) { }
   /**
    * Here Used loginForm keyword
@@ -55,8 +53,8 @@ export class LoginViewComponent implements OnInit {
       this.service.userData = data;
       this.router.navigate(['Github-Home', username]);
     }, err => {
-      this.ErrorText = err;
-      console.log(this.ErrorText);
+      this.ErrorMessage = 'Here You Enter Invalid Username';
+      this.toastr.error(err);
     });
   }
 }

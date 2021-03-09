@@ -35,6 +35,7 @@ import { GitHubResolver } from './resolver.service';
 import { ToastrModule } from 'ngx-toastr';
 
 import { ErrorViewComponent } from './error-view/error-view.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,7 @@ import { ErrorViewComponent } from './error-view/error-view.component';
     MatDialogModule,
     HttpClientModule,
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 2000,
       progressBar: true,
       preventDuplicates: true,
       progressAnimation: 'increasing'
